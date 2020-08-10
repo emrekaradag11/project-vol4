@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr" class="loading">
 <head>
-    <base href="http://127.0.0.1:8002/adminpanel/">
+    <base href="http://127.0.0.1:8002/admin/">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{csrf_token()}}">
@@ -41,8 +41,8 @@
             <div class="nav-container">
                 <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
                     <li class=" nav-item"><a href="../../../app/Http/Controllers/back"><i class="ft-home"></i><span class="menu-title">Dashboard</span></a></li>
-                    <li class=" nav-item"><a href="./options"><i class="ft-settings"></i><span class="menu-title">Options</span></a></li>
-                    <li class=" nav-item"><a href="./pages"><i class="ft-align-center"></i><span class="menu-title">Pages</span></a></li>
+                    <li class=" nav-item"><a href="./options"><i class="ft-settings"></i><span class="menu-title">Genel Ayarlar</span></a></li>
+                    <li class=" nav-item"><a href="./pages"><i class="ft-align-center"></i><span class="menu-title">Sayfalar</span></a></li>
                 </ul>
             </div>
         </div>
@@ -71,7 +71,7 @@
                         <li class="dropdown nav-item"><a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle"><i class="ft-user font-medium-3 blue-grey darken-4"></i>
                                 <p class="d-none">User Settings</p></a>
                             <div ngbdropdownmenu="" aria-labelledby="dropdownBasic3" class="dropdown-menu text-left dropdown-menu-right">
-                                <a href="{{url('adminpanel/users')}}" class="dropdown-item py-1"><i class="ft-edit mr-2"></i><span>Edit Profile</span></a>
+                                <a href="{{url('admin/users')}}" class="dropdown-item py-1"><i class="ft-edit mr-2"></i><span>Edit Profile</span></a>
                                 <a href="https://pixinvent.com/html/html/ltr/inbox.html" class="dropdown-item py-1"><i class="ft-mail mr-2"></i><span>My Inbox</span></a>
                                 <div class="dropdown-divider"></div><a href="https://pixinvent.com/html/html/ltr/login-page.html" class="dropdown-item"><i class="ft-power mr-2"></i><span>Logout</span></a>
                             </div>
@@ -95,7 +95,7 @@
         <div class="row">
             <div class="col-12 mt-1">
                 <h6 class="mt-1 mb-3 text-bold-400">Languages Options</h6>
-                <form class="change_lang" action="/adminpanel/change_lang" method="post">
+                <form class="change_lang" action="/admin/change_lang" method="post">
                     @csrf
                     <input type="text" name="langs" placeholder="Lang Names" class="w-100 form-group form-control" id="langs">
                     <input type="text" class="form-control form-group" placeholder="Langs Short Name" name="langs_short">

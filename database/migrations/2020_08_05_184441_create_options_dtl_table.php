@@ -17,7 +17,6 @@ class CreateOptionsDtlTable extends Migration
         /*
 
         bu tablo options tablosunu dil'e göre listelemek içindir.
-
         #metadata       => options tablosu ile bağlantı yapmak için
         #title        => sitenin title'i için
         #keywords     => sitenin default keywords'ü için

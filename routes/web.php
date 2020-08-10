@@ -21,8 +21,12 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'back\adminController@get_index')->name("admin.index");
-/*    Route::get('/options', 'adminController@get_options');
-    Route::post('/options', 'adminController@post_options');
+    Route::post('/change_lang',"back\adminController@set_langs");
+    Route::get('/options', 'back\adminController@get_options');
+    Route::post('/options', 'back\adminController@post_options');
+
+/*
+ *
     Route::post('/change_lang',"adminController@set_langs");
     Route::resource('pages', 'page_controller');
     Route::resource('users', 'userController');
