@@ -32,7 +32,7 @@ class CreatePagesDtlTable extends Migration
             $table->integer('metadata')->nullable();
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
-            $table->string('descriptipn')->nullable();
+            $table->string('description')->nullable();
             $table->string('keywords')->nullable();
             $table->string('text')->nullable();
             $table->integer('lang')->nullable();

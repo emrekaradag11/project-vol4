@@ -232,21 +232,7 @@
 @if(Session::has("message"))
     <script>
         $(document).ready(function () {
-            var type = "{{Session::get('type','info')}}";
-            switch (type) {
-                case 'info':
-                    toastr.info("{{ Session::get('message') }}","Progress Bar",{progressBar:!0})
-                    break;
-                case 'warning':
-                    toastr.warning("{{ Session::get('message') }}","Progress Bar",{progressBar:!0})
-                    break;
-                case 'success':
-                    toastr.success("{{ Session::get('message') }}","Progress Bar",{progressBar:!0})
-                    break;
-                case 'error':
-                    toastr.error("{{ Session::get('message') }}","Progress Bar",{progressBar:!0})
-                    break;
-            }
+            toastr.{{Session::get('type','info')}}("{{ Session::get('message') }}","{{Session::get('head','İşlem Başarılı')}}",{progressBar:!0})
         })
     </script>
 @endif;

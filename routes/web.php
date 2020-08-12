@@ -24,19 +24,24 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/change_lang',"back\adminController@set_langs");
     Route::get('/options', 'back\adminController@get_options');
     Route::post('/options', 'back\adminController@post_options');
+    Route::resource('pages', 'back\pageController');
+    Route::resource('text', 'back\textController');
 
-/*
- *
-    Route::post('/change_lang',"adminController@set_langs");
-    Route::resource('pages', 'page_controller');
-    Route::resource('users', 'userController');
     Route::post("/addfield","addFieldController@setFields")->name("setField");
     Route::post('setField', 'fieldDataController@setData')->name("setFieldData");
-    Route::post('setImages', 'imgController@setImg')->name("setImg");
-    Route::post('deleteImages', 'imgController@deleteImg')->name("deleteImg");
-    Route::resource('corporate', 'corporateController');
-    Route::resource('tree', 'treeController');
-    Route::get('/tree/create/{page_id?}', 'treeController@create');
-    Route::get('/tree/{id?}/edit/{page_id?}', 'treeController@edit');
-    Route::post('/sortable', 'page_controller@sortable')->name('admin.sortable');*/
+    Route::post('/sortable', 'page_controller@sortable')->name('admin.sortable');
+
+    /*
+
+        Route::resource('users', 'userController');
+        Route::post("/addfield","addFieldController@setFields")->name("setField");
+        Route::post('setField', 'fieldDataController@setData')->name("setFieldData");
+        Route::post('setImages', 'imgController@setImg')->name("setImg");
+        Route::post('deleteImages', 'imgController@deleteImg')->name("deleteImg");
+        Route::resource('tree', 'treeController');
+        Route::get('/tree/create/{page_id?}', 'treeController@create');
+        Route::get('/tree/{id?}/edit/{page_id?}', 'treeController@edit');
+        Route::post('/sortable', 'page_controller@sortable')->name('admin.sortable');
+
+    */
 });

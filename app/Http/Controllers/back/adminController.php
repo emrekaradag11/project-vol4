@@ -23,10 +23,19 @@ class adminController extends Controller
         $l = $lng->lang_short();
         $options = new options();
         $o = $options->get_options_data();
+
         return view("back.options")->with([
             "lng"=>$l,
             "options" => $o
         ]);
+    }
+
+        public function post_options(Request $request){
+        $lng = new lang();
+        $l = $lng->lang_short();
+        $options = new options();
+        $options->set_opt($request,$l);
+        return redirect()->back();
     }
 
 

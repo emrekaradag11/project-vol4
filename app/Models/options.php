@@ -25,27 +25,27 @@ class options extends Model
 
     public function get_options_data(){
         return $this
-            ->join("options_dtl","options.id","=","options_dtl.metadata")
-            ->get();
+            ->where("id","1")
+            ->first();
     }
 
     public function set_opt($request){
         $dtl = new options_dtl();
         $dtl->setDtl($request);
-
-        $s = "";
-        foreach ($request->post("social") as $socials) {
-            $s .= $socials . ",";
-        }
-
         $this->updateOrCreate(
             [
                 'id' => "1"
             ], [
-                "url" => $request->post("siteUrl")[0],
-                "socials" => $s
+                "url" => $request->post("siteUrl"),
+                "socials" => collect($request->post("social"))
             ]
         );
     }
+
+
+    public function getDetail() {
+        return $this->hasMany('App\Models\options_dtl','metadata','id');
+    }
+
 
 }

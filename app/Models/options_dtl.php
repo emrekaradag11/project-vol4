@@ -35,7 +35,6 @@ class options_dtl extends Model
                         "metadata" => "1",
                         'lang' => $k->id,
                         "title" => $request["siteTitle"][$l],
-                        "name" => $request["siteName"][$l],
                         "keywords" => $request["keywords"][$l],
                         "description" => $request["description"][$l],
                     ]
@@ -44,4 +43,7 @@ class options_dtl extends Model
         }
         return true;
     }
+
+
+
 }
