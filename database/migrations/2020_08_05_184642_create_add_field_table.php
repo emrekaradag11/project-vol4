@@ -56,6 +56,8 @@ class CreateAddFieldTable extends Migration
         time,           => saat
         url,            => site url için
         week,           => bulunduğu hafta için
+        select,         => Selectbox için
+        textarea,       => Büyük Metin Kutusu
         */
 
 
@@ -77,7 +79,9 @@ class CreateAddFieldTable extends Migration
                 'text',
                 'time',
                 'url',
-                'week'
+                'week',
+                'select',
+                'textarea'
             ]);
             $table->integer('page_id')->nullable();
             $table->integer('ord')->nullable();

@@ -84,7 +84,6 @@
                                                 <div class="form-body">
                                                     <h4 class="form-section"><i class="fa fa-facebook-square"></i> Sosyal Medyalar</h4>
                                                     <div class="row">
-
                                                         @foreach(json_decode($options->socials) as $k => $s)
 
                                                             @if($k == 0)

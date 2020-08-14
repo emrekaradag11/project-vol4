@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\{add_field_dtl};
 
 class add_field extends Model
 {
@@ -31,12 +32,101 @@ class add_field extends Model
     time,           => saat
     url,            => site url için
     week,           => bulunduğu hafta için
+    select,         => Selectbox için
+    textarea,       => Büyük Metin Kutusu
 
     */
+
 
     protected $table = "add_field";
     protected $guarded  = ["id"];
 
 
+    public function setField($request)
+    {
+        $data = new add_field();
+        $data->type = $request->post("type");
+        $data->page_id = $request->post("page_id");
+        $data->options = $request->post("options");
+        $data->save();
+        $metadata = $data->id;
+
+        $dtl = new add_field_dtl();
+        $dtl->setDtl($request , $metadata);
+
+        $noti = array(
+            'message' => "Ek Alan Başarıyla Eklendi",
+            'head'=>'İşlem Başarılı',
+            'type' => 'success',
+            'status' => '200'
+        );
+
+        return $noti;
+
+    }
+
+
+    public function updateField($request)
+    {
+
+        $this->
+            updateOrCreate(
+                [
+                    'id' => $request->id,
+                    'page_id' => $request->page_id,
+                ], [
+                "type" => $request->post("type"),
+                "page_id" => $request->post("page_id"),
+                "options" => $request->post("options"),
+            ]);
+
+        $dtl = new add_field_dtl();
+        $dtl->updateDtl($request , $request->id);
+
+        $noti = array(
+            'message' => "Ek Alan Başarıyla Güncellendi",
+            'head'=>'İşlem Başarılı',
+            'type' => 'success',
+            'status' => '200'
+        );
+
+        return $noti;
+
+    }
+
+
+    public function getFieldWithPageId($page_id)
+    {
+        return
+            $this->
+            where("page_id",$page_id)
+            ->get();
+    }
+    public function getFieldWithId($id)
+    {
+        return
+            $this->
+            where("id",$id)
+            ->first();
+    }
+
+    public function deleteField($id)
+    {
+        $this->where("id",$id)->delete();
+        return true;
+    }
+
+
+    /* bu kısım ek alan ismini listelemek için*/
+    public function getFirstName()
+    {
+        return $this->hasOne('App\Models\add_field_dtl','metadata','id');
+    }
+
+    /* bu kısım ek alan detayını dil'e göre listelemek için */
+    public function fieldDetail()
+    {
+        return $this->hasMany('App\Models\add_field_dtl','metadata','id');
+    }
 
 }

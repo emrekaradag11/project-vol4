@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\back;
 
 use App\Http\Controllers\Controller;
-use App\Models\{pages,lang};
+use App\Models\{add_field, pages, lang};
 use Illuminate\Http\Request;
 
 class pageController extends Controller
@@ -70,11 +70,12 @@ class pageController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit($id)
+    public function edit($page_id)
     {
+        $fieldModel = new add_field();
         $parent = pages::all();
-        $page = pages::find($id);
-        $fields = "";
+        $page = pages::find($page_id);
+        $fields = $fieldModel->getFieldWithPageId($page_id);
         return view(('back.pages.edit') , compact("fields","parent",'page'));
     }
 

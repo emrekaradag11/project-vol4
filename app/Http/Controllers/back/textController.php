@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\back;
 
 use App\Http\Controllers\Controller;
-use App\Models\{pages,lang};
+use App\Models\{add_field, field_data, pages, lang};
 use Illuminate\Http\Request;
 
 class textController extends Controller
@@ -64,8 +64,12 @@ class textController extends Controller
      */
     public function edit($id)
     {
+        $fieldModel = new add_field();
+        $fieldDataModel = new field_data();
         $page = pages::find($id);
-        return view(('back.text.edit') , compact('page'));
+        $fields = $fieldModel->getFieldWithPageId($id);
+        $fieldData = $fieldDataModel->getFieldData($page->id,$page->id);
+        return view(('back.text.edit') , compact('fields','page','fieldData'));
     }
     /**
      * Update the specified resource in storage.
@@ -77,7 +81,7 @@ class textController extends Controller
     public function update(Request $request)
     {
         $pages = new pages();
-        $pages->update_pages($request);
+        $pages->setText($request);
         return redirect()->back();
     }
 

@@ -232,10 +232,23 @@
 @if(Session::has("message"))
     <script>
         $(document).ready(function () {
-            toastr.{{Session::get('type','info')}}("{{ Session::get('message') }}","{{Session::get('head','İşlem Başarılı')}}",{progressBar:!0})
+            toastr.{{Session::get('type','info')}}(
+                "{{ Session::get('message') }}",
+                "{{Session::get('head','İşlem Başarılı')}}",
+                {progressBar:!0}
+                )
         })
     </script>
-@endif;
+@endif
+<script>
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+</script>
 @yield("js")
 
 </body>

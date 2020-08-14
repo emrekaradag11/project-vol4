@@ -28,7 +28,8 @@ class pages_dtl extends Model
     protected $table = "pages_dtl";
     protected $guarded  = ["id"];
 
-    public function setDtl($request,$metadata){
+    public function setDtl($request,$metadata)
+    {
         $lang = new lang();
         $lang = $lang->lang_short();
         foreach ($lang as $l => $k) {
@@ -49,25 +50,48 @@ class pages_dtl extends Model
 
     public function update_dtl($request,$metadata)
     {
+
         $lang = new lang();
         $lang = $lang->lang_short();
         foreach ($lang as $l => $k) {
-            $this
-                ->where([
-                    "metadata" => $metadata,
-                    'lang' => $k->id
-                ])
-                ->updateOrCreate(
+            $this->
+                updateOrCreate(
                     [
-                        'lang' => $k->id,
+                        "metadata" => $metadata,
+                        'lang' => $k->id
                     ], [
-                    "title" => $request->post("title")[$l],
-                    "slug" => Str::slug($request->post("title")[$l], '-'),
-                    "description" => $request->post("description")[$l],
-                    "keywords" => $request->post("keywords")[$l],
-                ]);
+                        "title" => $request->post("title")[$l],
+                        "slug" => Str::slug($request->post("title")[$l], '-'),
+                        "description" => $request->post("description")[$l],
+                        "keywords" => $request->post("keywords")[$l],
+                    ]
+                );
         }
         return true;
+
+    }
+
+
+    public function setTextDtl($request,$metadata)
+    {
+
+        $lang = new lang();
+        $lang = $lang->lang_short();
+        foreach ($lang as $l => $k) {
+            $this->
+                updateOrCreate(
+                    [
+                        "metadata" => $metadata,
+                        'lang' => $k->id
+                    ], [
+                        "description" => $request->post("description")[$l],
+                        "keywords" => $request->post("keywords")[$l],
+                        "text" => $request->post("text")[$l],
+                    ]
+                );
+        }
+        return true;
+
     }
 
 

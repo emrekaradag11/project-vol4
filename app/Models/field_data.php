@@ -25,4 +25,66 @@ class field_data extends Model
 
     protected $table = "field_data";
     protected $guarded  = ["id"];
+
+
+    public function setFieldData($request)
+    {
+
+        $dtl = new field_data_dtl();
+
+
+        $page_id = $request->post("page_id");
+        $parent = $request->post("parent");
+
+        $request = $request->except(['page_id', 'parent', '_token']);
+
+        foreach ($request as $k => $r) {
+
+            $data = new field_data();
+            $data->parent = $parent;
+            $data->field_id = $k;
+            $data->page_id = $page_id;
+            $data->save();
+            $metadata = $data->id;
+
+            $dtl->setDtl($r , $metadata);
+
+        }
+
+        $noti = array(
+            'message' => "Alanlar Başarıyla Kaydedildi",
+            'head'=>'İşlem Başarılı',
+            'type' => 'success',
+            'status' => '200'
+        );
+
+        return $noti;
+
+    }
+
+    public function getFieldData($page_id,$parent)
+    {
+        $resData = collect();
+        $data = $this->
+            where([
+                "parent" => $parent,
+                "page_id" => $page_id,
+            ])->
+            get();
+        foreach ($data as $d) {
+            $resData->put($d->field_id,$d->fieldDataDetail);
+        }
+
+        return $resData;
+
+    }
+
+
+    /* bu kısım ek alan detayını dil'e göre listelemek için */
+    public function fieldDataDetail()
+    {
+        return $this->hasMany('App\Models\field_data_dtl','metadata','id');
+    }
+
+
 }

@@ -68,6 +68,23 @@ class pages extends Model
 
     }
 
+    public function setText($request)
+    {
+
+        $dtl = new pages_dtl();
+        $dtl->setTextDtl($request , $request->post("page_id"));
+
+        $noti = array(
+            'message' => "Başarıyla Güncellendi",
+            'head'=>'İşlem Başarılı',
+            'type' => 'success',
+            'status' => '200'
+        );
+
+        return $noti;
+
+    }
+
 
     /* bu kısım sayfa başlığını listelemek için*/
     public function getFirstName()
@@ -80,6 +97,5 @@ class pages extends Model
     {
         return $this->hasMany('App\Models\pages_dtl','metadata','id');
     }
-
 
 }
