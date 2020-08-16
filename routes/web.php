@@ -27,10 +27,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('pages', 'back\pageController');
     Route::resource('text', 'back\textController');
 
-    Route::post("/addfield","back\addFieldController@setFields")->name("setField");
-    Route::post("/updateFields","back\addFieldController@updateFields")->name("updateFields");
 
     /* ek alanlar */
+    Route::post("/addfield","back\addFieldController@setFields")->name("setField");
+    Route::post("/updateFields","back\addFieldController@updateFields")->name("updateFields");
     Route::post("/getFieldWithPageId","back\addFieldController@getFieldWithPageId")->name("getFieldWithPageId");
     Route::post("/getFieldWithId","back\addFieldController@getFieldWithId")->name("getFieldWithId");
     Route::get('/deleteField/{id?}', 'back\addFieldController@deleteField')->name("deleteField");
@@ -38,19 +38,17 @@ Route::group(['prefix' => 'admin'], function () {
     /* ek alan dataları */
     Route::post("/setFieldData","back\\fieldDataController@setFieldData")->name("setFieldData");
 
+    /* gorsel router'lari */
+    Route::post('setImages', 'back\imgController@setImg')->name("setImg");
+    Route::post('deleteImages', 'back\imgController@deleteImg')->name("deleteImg");
+
+    /* tree router'lari */
+    Route::resource('tree', 'back\treeController');
+    Route::get('/tree/create/{page_id?}', 'back\treeController@create');
+    Route::get('/tree/{id?}/edit/{page_id?}', 'back\treeController@edit');
 
 
+    Route::post('/sortable', 'back\pageController@sortable')->name('admin.sortable');
 
-    Route::post('/sortable', 'page_controller@sortable')->name('admin.sortable');
 
-    /*
-
-        Route::resource('users', 'userController');
-        Route::post('setImages', 'imgController@setImg')->name("setImg");
-        Route::post('deleteImages', 'imgController@deleteImg')->name("deleteImg");
-        Route::resource('tree', 'treeController');
-        Route::get('/tree/create/{page_id?}', 'treeController@create');
-        Route::get('/tree/{id?}/edit/{page_id?}', 'treeController@edit');
-
-    */
 });

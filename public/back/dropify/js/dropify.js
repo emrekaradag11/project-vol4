@@ -46,19 +46,19 @@ function Dropify(element, options) {
         allowedFormats: ['portrait', 'square', 'landscape'],
         allowedFileExtensions: ['*'],
         messages: {
-            'default': 'Drag and drop a file here or click',
-            'replace': 'Drag and drop or click to replace',
-            'remove':  'Remove',
-            'error':   'Ooops, something wrong happended.'
+            'default': 'Sürükleyip bırakın veya tıklayın',
+            'replace': 'Değiştirmek için sürükleyip bırakın veya tıklayın',
+            'remove':  'Kaldır',
+            'error':   'Oops, bir sorun oldu.'
         },
         error: {
-            'fileSize': 'The file size is too big ({{ value }} max).',
-            'minWidth': 'The image width is too small ({{ value }}}px min).',
-            'maxWidth': 'The image width is too big ({{ value }}}px max).',
-            'minHeight': 'The image height is too small ({{ value }}}px min).',
-            'maxHeight': 'The image height is too big ({{ value }}px max).',
-            'imageFormat': 'The image format is not allowed ({{ value }} only).',
-            'fileExtension': 'The file is not allowed ({{ value }} only).'
+            'fileSize': 'Dosya boyutu çok büyük. Maksimum ({{ value }} olmalıdır).',
+            'minWidth': 'Görsel genişliği çok dar. Minimum ({{ value }}}px olmalıdır).',
+            'maxWidth': 'Görsel genişliği çok geniş. Maksimum ({{ value }}}px olmalıdır).',
+            'minHeight': 'Görsel yüksekliği çok az. Minimum ({{ value }}}px olmalıdır).',
+            'maxHeight': 'Görsel yüksekliği çok fazla. Maksimum ({{ value }}px olmalıdır).',
+            'imageFormat': 'Görsel formatı uygun değildir. Sadece ({{ value }} formatları geçerlidir).',
+            'fileExtension': 'Dosya uygun değildir. Sadece ({{ value }} olmalıdır).'
         },
         tpl: {
             wrap:            '<div class="dropify-wrapper"></div>',

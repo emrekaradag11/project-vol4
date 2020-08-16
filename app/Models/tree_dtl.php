@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\{lang};
 
 class tree_dtl extends Model
 {
@@ -25,4 +26,26 @@ class tree_dtl extends Model
 
     protected $table = "tree_dtl";
     protected $guarded  = ["id"];
+
+    public function setDtl($request,$metadata)
+    {
+        $lang = new lang();
+        $lang = $lang->lang_short();
+        foreach ($lang as $l => $k) {
+
+            $data = new tree_dtl();
+            $data->metadata = $metadata;
+            $data->title = $request->post("title")[$l];
+            $data->text = $request->post("text")[$l];
+            $data->description = $request->post("description")[$l];
+            $data->keywords = $request->post("keywords")[$l];
+            $data->lang = $k->id;
+
+            $data->save();
+
+        }
+        return true;
+    }
+
+
 }

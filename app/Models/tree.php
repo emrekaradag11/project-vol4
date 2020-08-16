@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\{tree_dtl};
 use Illuminate\Database\Eloquent\Model;
 
 class tree extends Model
@@ -23,4 +24,42 @@ class tree extends Model
 
     protected $table = "tree";
     protected $guarded  = ["id"];
+
+
+    public function set_tree($request)
+    {
+        $data = new tree();
+
+        $data->parent = $request->post("parent");
+        $data->type = $request->post("type");
+        $data->page_id = $request->post("page_id");
+        $data->save();
+        $metadata = $data->id;
+
+        $dtl = new tree_dtl();
+        $dtl->setDtl($request , $metadata);
+
+        $noti = array(
+            'message' => "Başarıyla Eklendi",
+            'head'=>'İşlem Başarılı',
+            'type' => 'success',
+            'status' => '200'
+        );
+
+        return $noti;
+    }
+
+
+    /* bu kısım sayfa başlığını listelemek için*/
+    public function getFirstName()
+    {
+        return $this->hasOne('App\Models\tree_dtl','metadata','id');
+    }
+
+    /* bu kısım sayfa başlığını dil'e göre listelemek için */
+    public function getDetail()
+    {
+        return $this->hasMany('App\Models\tree_dtl','metadata','id');
+    }
+
 }

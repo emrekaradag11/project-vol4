@@ -31,8 +31,11 @@ class CreateTreeDtlTable extends Migration
 
         Schema::create('tree_dtl', function (Blueprint $table) {
             $table->id();
-            $table->string('head')->nullable();
+            $table->string('title')->nullable();
             $table->string('text')->nullable();
+            $table->string('description')->nullable();
+            $table->string('keywords')->nullable();
+            $table->string('slug')->unique();
             $table->integer('metadata')->nullable();
             $table->integer('lang')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
