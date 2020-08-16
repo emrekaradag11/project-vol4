@@ -53,7 +53,6 @@
                                                 <select name="template" class="form-control" id="template">
                                                     <option value="1">Text</option>
                                                     <option value="2">Tree</option>
-                                                    <option value="3">Images</option>
                                                 </select>
                                             </div>
                                         </div>

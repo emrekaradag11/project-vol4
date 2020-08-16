@@ -56,7 +56,6 @@
                                                 <select name="template" class="form-control" id="template">
                                                     <option {{$page->template == "1"?"selected":null}} value="1">Text</option>
                                                     <option {{$page->template == "2"?"selected":null}} value="2">Tree</option>
-                                                    <option {{$page->template == "3"?"selected":null}} value="3">Images</option>
                                                 </select>
                                             </div>
                                         </div>

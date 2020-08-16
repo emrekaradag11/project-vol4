@@ -20,19 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbd35e1f-6e1c-4d1f-932f-a55629e9b4ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/back/pages/subCategory.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/back/tree/subCategory.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/back/pageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/back/pageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/back/treeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/back/treeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/pages.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/pages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/tree.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/tree.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/back/app-assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/back/app-assets/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_05_184506_create_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_05_184506_create_pages_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/back/pages/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/back/pages/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/back/pages/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/back/tree/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/tree/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/back/tree/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/tree/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/pages/subCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/subCategory.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +165,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MONSTER\LRVLPROJECT\project-vol4\resources\views\back" />
       <recent name="C:\Users\MONSTER\LRVLPROJECT\project-vol4\app\Http\Controllers\back" />
     </key>
   </component>
@@ -192,7 +185,7 @@
       <updated>1596652869682</updated>
       <workItem from="1596652870791" duration="29490000" />
       <workItem from="1597081663855" duration="45991000" />
-      <workItem from="1597513277457" duration="17906000" />
+      <workItem from="1597513277457" duration="19044000" />
     </task>
     <servers />
   </component>

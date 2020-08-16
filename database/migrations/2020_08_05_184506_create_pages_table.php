@@ -25,7 +25,7 @@ class CreatePagesTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->integer('parent')->nullable();
-            $table->integer('template')->nullable()->comment("şablon id'si 1 ise text şablon id'si 2 ise tree şablon id'si 3 ise çoklu resim anlamına gelir");
+            $table->integer('template')->nullable()->comment("şablon id'si 1 ise text şablon id'si 2 ise tree anlamına gelir");
             $table->string('redirect')->nullable();
             $table->integer('hidden')->default(0)->nullable()->comment("1 ise gizli 0 ise açık");
             $table->integer('ord')->nullable();

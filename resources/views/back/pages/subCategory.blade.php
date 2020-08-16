@@ -7,8 +7,6 @@
                     <a href="text/{{$p->id}}/edit" class="btn-sm btn btn-raised btn-icon btn-secondary my-0 mr-1"> <i class="fa fa-pencil-square-o"></i> </a>
                 @elseif($p->template == 2)
                     <a href="tree/{{$p->id}}" class="btn-sm btn btn-raised btn-icon btn-secondary my-0 mr-1"> <i class="fa fa-pencil-square-o"></i> </a>
-                @elseif($p->template == 3)
-                    <a href="images/{{$p->id}}/edit" class="btn-sm btn btn-raised btn-icon btn-secondary my-0 mr-1"> <i class="fa fa-pencil-square-o"></i> </a>
                 @else
                     <a href="#" class="btn-sm btn btn-raised btn-icon btn-secondary my-0 mr-1"> <i class="fa fa-pencil-square-o"></i> </a>
                 @endif
