@@ -9,9 +9,10 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form row" method="post" enctype="multipart/form-data" action="/admin/tree">
+                            <form class="form row" method="post" enctype="multipart/form-data" action="/admin/tree/{{$data->id}}">
                                 <div class="col-12">
                                     @csrf
+                                    @method("PUT")
                                     <ul class="nav col-12 nav-tabs m-0">
                                         @foreach($lng as $l)
                                             <li class="nav-item">

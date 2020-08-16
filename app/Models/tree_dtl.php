@@ -47,5 +47,28 @@ class tree_dtl extends Model
         return true;
     }
 
+    public function update_dtl($request,$metadata)
+    {
+
+        $lang = new lang();
+        $lang = $lang->lang_short();
+        foreach ($lang as $l => $k) {
+            $this->
+            updateOrCreate(
+                [
+                    "metadata" => $metadata,
+                    'lang' => $k->id
+                ], [
+                    "title" => $request->post("title")[$l],
+                    "text" => $request->post("text")[$l],
+                    "description" => $request->post("description")[$l],
+                    "keywords" => $request->post("keywords")[$l],
+                ]
+            );
+        }
+        return true;
+
+    }
+
 
 }

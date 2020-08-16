@@ -44,8 +44,8 @@ class treeController extends Controller
     public function store(Request $request)
     {
         $tree = new tree();
-        $tree->set_tree($request);
-        return redirect()->back();
+        $response = $tree->set_tree($request);
+        return redirect()->back()->with($response);
     }
 
     /**
@@ -88,11 +88,11 @@ class treeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $tree = new tree();
-        $tree->updateTree($request);
-        return redirect()->back();
+        $response = $tree->updateTree($request);
+        return redirect()->back()->with($response);
     }
 
     /**
