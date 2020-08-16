@@ -98,4 +98,15 @@ class pages extends Model
         return $this->hasMany('App\Models\pages_dtl','metadata','id');
     }
 
+
+    public function getSubControl()
+    {
+        return $this->hasMany('App\Models\pages','parent','id');
+    }
+
+    public function getSubCategories()
+    {
+        return $this->hasMany('App\Models\pages','parent','id');
+    }
+
 }

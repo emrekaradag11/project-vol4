@@ -57,7 +57,7 @@ class treeController extends Controller
     public function show($id)
     {
         $page = pages::find($id);
-        $tree = tree::where("page_id" , $id)->get();
+        $tree = tree::where(["page_id" => $id , "parent"=>"0"])->get();
         return view(('back.tree.index') , compact("page","tree"));
     }
 

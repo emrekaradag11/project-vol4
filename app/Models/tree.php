@@ -87,4 +87,16 @@ class tree extends Model
         return $this->hasMany('App\Models\tree_dtl','metadata','id');
     }
 
+
+    public function getSubControl()
+    {
+        return $this->hasMany('App\Models\tree','parent','id');
+    }
+
+    public function getSubCategories()
+    {
+        return $this->hasMany('App\Models\tree','parent','id');
+    }
+
+
 }

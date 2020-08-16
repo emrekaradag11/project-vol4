@@ -91,7 +91,7 @@
                 <div class="col-lg-4">
 
                     @if(count($fields)>0)
-                        @include("back\\fields\\edit" , ['field_page_id' => $page->id,"field_parent"=>$data->id])
+                        @include("back.fields.edit" , ['field_page_id' => $page->id,"field_parent"=>$data->id])
                     @endif
 
                 </div>

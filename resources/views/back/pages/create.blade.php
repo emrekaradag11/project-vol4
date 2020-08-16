@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card-header">
-                        <h4 class="card-title">Sayfa Ekle</h4>
+                        <h4 class="card-title d-flex justify-content-between align-items-center">Sayfa Ekle<a class="btn btn-success btn-sm" href="pages">Geri Dön</a></h4>
                         <p>Bu menüden sayfalarınızı ekleyebilirsiniz.</p>
                     </div>
                     <div class="card-content">

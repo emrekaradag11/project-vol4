@@ -21,7 +21,7 @@ class pageController extends Controller
 
     public function index()
     {
-        $pages = pages::get();
+        $pages = pages::where("parent",0)->get();
         return view('back.pages.list',compact('pages'));
     }
 
@@ -105,4 +105,14 @@ class pageController extends Controller
     {
         //
     }
+
+
+
+
+
+
+
+
+
+
 }
