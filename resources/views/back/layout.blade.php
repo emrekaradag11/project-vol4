@@ -40,9 +40,14 @@
         <div class="sidebar-content">
             <div class="nav-container">
                 <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
-                    <li class=" nav-item"><a href="../../../app/Http/Controllers/back"><i class="ft-home"></i><span class="menu-title">Dashboard</span></a></li>
+
+                    <li class=" nav-item"><a href="/admin/"><i class="ft-home"></i><span class="menu-title">Dashboard</span></a></li>
+
                     <li class=" nav-item"><a href="./options"><i class="ft-settings"></i><span class="menu-title">Genel Ayarlar</span></a></li>
+
                     <li class=" nav-item"><a href="./pages"><i class="ft-align-center"></i><span class="menu-title">Sayfalar</span></a></li>
+                    <li class=" nav-item"><a href="./contact"><i class="ft-phone-call"></i><span class="menu-title">İletişim</span></a></li>
+
                 </ul>
             </div>
         </div>

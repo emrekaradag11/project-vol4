@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/options', 'back\adminController@post_options');
     Route::resource('pages', 'back\pageController');
     Route::resource('text', 'back\textController');
+    Route::resource('contact', 'back\contactController');
 
 
     /* ek alanlar */

@@ -97,7 +97,6 @@
                             <div class="text-right">
                                 <button type="button" class="js-addSpace btn btn-primary btn-lg" data-toggle="modal" data-target="#addField"><i class="fa fa-pencil"></i> Ekle</button>
                             </div>
-
                             <ul class="sortables pl-0">
                                 @if(count($fields)>0)
                                     @foreach($fields as $f)

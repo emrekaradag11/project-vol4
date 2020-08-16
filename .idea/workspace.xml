@@ -20,11 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbd35e1f-6e1c-4d1f-932f-a55629e9b4ff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/back/contact/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/back/contact/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/back/contact/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_05_184506_create_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_05_184506_create_pages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/back/pages/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_05_184837_create_contact_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_05_184837_create_contact_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/back/pages/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/back/pages/subCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/subCategory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +189,7 @@
       <updated>1596652869682</updated>
       <workItem from="1596652870791" duration="29490000" />
       <workItem from="1597081663855" duration="45991000" />
-      <workItem from="1597513277457" duration="19044000" />
+      <workItem from="1597513277457" duration="21953000" />
     </task>
     <servers />
   </component>
@@ -205,10 +209,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2190" y="269" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597586089779">
+    <state x="2190" y="269" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597609237239">
       <screen x="1920" y="-426" width="1080" height="1880" />
     </state>
-    <state x="2190" y="269" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.-426.1080.1880@1920.-426.1080.1880" timestamp="1597586089779" />
+    <state x="2190" y="269" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.-426.1080.1880@1920.-426.1080.1880" timestamp="1597609237239" />
     <state x="1961" y="159" key="SettingsEditor" timestamp="1597001192472">
       <screen x="1920" y="-426" width="1080" height="1880" />
     </state>

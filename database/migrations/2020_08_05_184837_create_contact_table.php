@@ -29,6 +29,7 @@ class CreateContactTable extends Migration
 
         Schema::create('contact', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
             $table->string('map')->nullable();
