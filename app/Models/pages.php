@@ -86,6 +86,47 @@ class pages extends Model
     }
 
 
+    public function change_order($request){
+
+        foreach ($request as $key => $value)
+        {
+            $this->where('id',$value)->update(["ord" => $key]);
+        }
+
+        $noti = array(
+            'message' => "Sıralama Başarılı",
+            'head'=>'İşlem Başarılı',
+            'type' => 'success',
+            'status' => '200'
+        );
+
+        return $noti;
+    }
+    public function changeHidden($request){
+        $this->where('id',$request->post("id"))->update(["hidden" => $request->post("hidden")]);
+
+        if($request->post("hidden") == "1"){
+            $hidden = "0";
+            $icon = "fa-eye-slash";
+        }else{
+            $hidden = "1";
+            $icon = "fa-eye";
+        }
+
+        $noti = array(
+            'message' => "Gizleme Başarılı",
+            'head'=>'İşlem Başarılı',
+            'type' => 'success',
+            'status' => '200',
+            'hidden' => $hidden,
+            'icon' => $icon
+        );
+
+        return $noti;
+
+    }
+
+
     /* bu kısım sayfa başlığını listelemek için*/
     public function getFirstName()
     {

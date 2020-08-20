@@ -18,3 +18,55 @@
     </div>
 
 @endsection
+
+
+
+@section("js")
+    <script src="/back/app-assets/js/jquery-ui.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(".js_delete").on("click",function () {
+            $(".js_delete_form").attr("action","pages/" + $(this).data("id")).submit();
+        })
+
+        $( ".sortables" ).sortable({
+            revert: true,
+            handle: ".list_item",
+            stop: function (event, ui) {
+                let data = $(this).sortable('toArray', {attribute: 'data-content'});
+                $.ajax({
+                    type:"post",
+                    method:"post",
+                    data: {
+                        data : data,
+                    },
+                    url: "{!!route('pageSortable')!!}",
+                    success: function (msg) {
+                        console.log(msg)
+                    }
+                });
+
+            }
+        });
+
+        $('.sortables').disableSelection();
+
+        $(document).on("click",".js-hidden",function (){
+            item = $(this);
+            $.ajax({
+                type:"post",
+                method:"post",
+                data: {
+                    id : this.dataset.id,
+                    hidden : this.dataset.hidden,
+                },
+                url: "{!!route('pageHidden')!!}",
+                success: function (res) {
+                    item.find("i").removeAttr("class").addClass("fa " + res.icon);
+                }
+            });
+        });
+
+    </script>
+@endsection

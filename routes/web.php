@@ -25,6 +25,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/options', 'back\adminController@get_options');
     Route::post('/options', 'back\adminController@post_options');
     Route::resource('pages', 'back\pageController');
+    Route::post('/pageSortable', 'back\pageController@sortable')->name('pageSortable');
+    Route::post('/pageHidden', 'back\pageController@hidden')->name('pageHidden');
     Route::resource('text', 'back\textController');
     Route::resource('contact', 'back\contactController');
 
@@ -49,7 +51,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/tree/{id?}/edit/{page_id?}', 'back\treeController@edit');
 
 
-    Route::post('/sortable', 'back\pageController@sortable')->name('admin.sortable');
 
 
 });

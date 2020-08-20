@@ -11,7 +11,7 @@
                     <a href="#" class="btn-sm btn btn-raised btn-icon btn-secondary my-0 mr-1"> <i class="fa fa-pencil-square-o"></i> </a>
                 @endif
                     <a href="pages/{{$p->id}}/edit" class="btn-sm btn btn-raised btn-icon btn-github my-0 mr-1"> <i class="fa fa-star"></i> </a>
-                     <a href="" class="btn btn-sm btn-raised btn-icon btn-vimeo my-0 mr-1"> <i class="fa fa-eye"></i> </a>
+                     <a data-id="{{$p->id}}" data-hidden="{{$p->hidden=="1"?"0":"1"}}" tabindex class="btn js-hidden btn-sm btn-raised btn-icon btn-vimeo my-0 mr-1"> <i class="fa {{$p->hidden=="1"?"fa-eye-slash":"fa-eye"}}"></i> </a>
                      <a href="javascript:void(0);" data-id="{{$p->id}}" class="btn btn-sm js_delete btn-raised btn-icon btn-danger my-0 mr-1"> <i class="fa fa-trash-o"></i> </a>
                 </span>
         </div>

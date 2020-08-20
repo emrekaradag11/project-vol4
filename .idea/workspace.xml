@@ -20,14 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbd35e1f-6e1c-4d1f-932f-a55629e9b4ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/back/contact/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/back/contact/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/back/contact/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_05_184837_create_contact_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_05_184837_create_contact_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/back/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/back/pages/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/back/pageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/back/pageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/pages.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/pages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/pages/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/pages/subCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/pages/subCategory.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +186,8 @@
       <updated>1596652869682</updated>
       <workItem from="1596652870791" duration="29490000" />
       <workItem from="1597081663855" duration="45991000" />
-      <workItem from="1597513277457" duration="21953000" />
+      <workItem from="1597513277457" duration="22643000" />
+      <workItem from="1597945531319" duration="7431000" />
     </task>
     <servers />
   </component>
@@ -217,10 +215,10 @@
       <screen x="1920" y="-426" width="1080" height="1880" />
     </state>
     <state x="1961" y="159" key="SettingsEditor/0.0.1920.1040/1920.-426.1080.1880@1920.-426.1080.1880" timestamp="1597001192472" />
-    <state width="510" height="446" key="SwitcherDM" timestamp="1597604243506">
+    <state width="510" height="446" key="SwitcherDM" timestamp="1597954911490">
       <screen x="1920" y="-426" width="1080" height="1880" />
     </state>
-    <state width="510" height="446" key="SwitcherDM/0.0.1920.1040/1920.-426.1080.1880@1920.-426.1080.1880" timestamp="1597604243506" />
+    <state width="510" height="446" key="SwitcherDM/0.0.1920.1040/1920.-426.1080.1880@1920.-426.1080.1880" timestamp="1597954911490" />
     <state x="711" y="0" width="1053" height="1166" maximized="true" key="dock-window-1" timestamp="1597579291022">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -237,9 +235,9 @@
       <screen x="1920" y="-426" width="1080" height="1880" />
     </state>
     <state x="2168" y="119" width="583" height="789" key="find.popup/0.0.1920.1040/1920.-426.1080.1880@1920.-426.1080.1880" timestamp="1597346651078" />
-    <state x="2116" y="237" key="run.anything.popup" timestamp="1597177769005">
+    <state x="2116" y="237" key="run.anything.popup" timestamp="1597952670051">
       <screen x="1920" y="-426" width="1080" height="1880" />
     </state>
-    <state x="2116" y="237" key="run.anything.popup/0.0.1920.1040/1920.-426.1080.1880@1920.-426.1080.1880" timestamp="1597177769005" />
+    <state x="2116" y="237" key="run.anything.popup/0.0.1920.1040/1920.-426.1080.1880@1920.-426.1080.1880" timestamp="1597952670051" />
   </component>
 </project>

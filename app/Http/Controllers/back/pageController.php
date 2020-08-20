@@ -21,7 +21,7 @@ class pageController extends Controller
 
     public function index()
     {
-        $pages = pages::where("parent",0)->get();
+        $pages = pages::where("parent",0)->orderBy('ord')->get();
         return view('back.pages.list',compact('pages'));
     }
 
@@ -84,7 +84,7 @@ class pageController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
 
     public function update(Request $request)
@@ -105,6 +105,26 @@ class pageController extends Controller
     {
         //
     }
+
+
+    public function sortable(Request $request){
+
+        if($request->ajax()){
+            $pages = new pages();
+            $response = $pages->change_order($request->post("data"));
+        }
+        return $response;
+
+    }
+
+    public function hidden(Request $request){
+        if($request->ajax()){
+            $pages = new pages();
+            $response = $pages->changeHidden($request);
+        }
+        return $response;
+    }
+
 
 
 
