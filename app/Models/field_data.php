@@ -62,6 +62,31 @@ class field_data extends Model
 
     }
 
+
+
+    public function updateFieldData($request)
+    {
+
+        $dtlModel = new field_data_dtl();
+        $dtlReque = $this->where([
+            "page_id" => $request->post("page_id"),
+            "parent" => $request->post("parent"),
+        ])->get();
+        foreach ($dtlReque as $k => $dtl) {
+            $dtlModel->update_dtl($request[$dtl->field_id],$dtl->id);
+        }
+
+        $noti = array(
+            'message' => "Başarıyla Güncellendi",
+            'head'=>'İşlem Başarılı',
+            'type' => 'success',
+            'status' => '200'
+        );
+
+        return $noti;
+
+    }
+
     public function getFieldData($page_id,$parent)
     {
         $resData = collect();
@@ -86,5 +111,13 @@ class field_data extends Model
         return $this->hasMany('App\Models\field_data_dtl','metadata','id');
     }
 
+    public function deleteFieldDataWithPageId($page_id)
+    {
+
+        $this->where("page_id",$page_id)->each(function($q){
+            $q->fieldDataDetail()->delete();
+            $q->delete();
+        });
+    }
 
 }

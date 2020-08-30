@@ -147,7 +147,26 @@ class pages extends Model
 
     public function getSubCategories()
     {
-        return $this->hasMany('App\Models\pages','parent','id');
+        return $this->hasMany('App\Models\pages','parent','id')->orderBy("ord","asc");
+    }
+
+    public function delete_page($page_id)
+    {
+        $addFieldModel = new add_field();
+        $fieldDataModel = new field_data();
+        $treeModel = new tree();
+        $imgModel = new img();
+
+        $addFieldModel->deleteFieldWithPageId($page_id);
+        $treeModel->deleteTreeWithPageId($page_id);
+        $imgModel->deleteImgWithPageId($page_id);
+        $fieldDataModel->deleteFieldDataWithPageId($page_id);
+
+        $this->where("id",$page_id)->each(function($q){
+            $q->getDetail()->delete();
+            $q->delete();
+        });
+
     }
 
 }

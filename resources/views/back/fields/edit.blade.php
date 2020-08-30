@@ -1,4 +1,4 @@
-<form action="{{route("setFieldData")}}" class="card-body pb-3" method="post">
+<form action="{{route("updateFieldData")}}" class="card-body pb-3" method="post">
     @csrf
     <ul class="nav col-12 nav-tabs m-0 px-3">
         @foreach($lng as $l)
@@ -19,7 +19,7 @@
                                     <label>{{$f->fieldDetail[$l]->name}}</label>
                                     <select name="{{$f->id}}[]" class="form-control">
                                         @foreach(explode(',', $f->fieldDetail[$l]->properties) as $pr)
-                                            <option {{$fieldData[$f->id][$l]["data"] == $pr?"selected":null}} value="{{@trim($pr)}}">{{@trim($pr)}}</option>
+                                            <option {{(!empty($fieldData[$f->id][$l]["data"]) && ($fieldData[$f->id][$l]["data"] == $pr))?"selected":null}} value="{{@trim($pr)}}">{{@trim($pr)}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -50,7 +50,6 @@
                                                 <label class="custom-control-label" for="{{Str::slug($pr, '-')}}">{{$pr}}</label>
                                             </div>
                                         @endforeach
-
                                     </div>
                                 </div>
                             </div>

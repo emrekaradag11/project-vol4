@@ -16,7 +16,7 @@
                 </span>
         </div>
         @if(count($p->getSubControl)>0)
-            <ul>
+            <ul class="sortables">
                 @include("back/pages/subCategory",["pages" => $p->getSubCategories])
             </ul>
         @endif

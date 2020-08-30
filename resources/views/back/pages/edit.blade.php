@@ -127,12 +127,13 @@
 @section("js")
 
     <script type="text/javascript">
-        /*$(function(){
+        $(function(){
             $.ajaxSetup({
                 headers:{
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
 
             $( ".sortables" ).sortable({
                 revert: true,
@@ -141,38 +142,40 @@
                     let data = $(this).sortable('toArray', {attribute: 'data-content'});
                     $.ajax({
                         type:"post",
+                        method:"post",
                         data: {
                             data : data,
-                            table : "add_space"
                         },
-                        url: "{!!route('admin.sortable')!!}",
-                        success: function (msg) {
-                            console.log(msg);
-                            if (msg) {
-                                toastr.success("Sıralama gerçekleştirildi", "İşlem Başarılı!", {
-                                    showMethod: "slideDown",
-                                    hideMethod: "slideUp",
-                                    timeOut: 3e3,
-                                    progressBar: !0,
-                                    closeButton: !0
-                                })
-                            } else {
-                                toastr.warning("Bir sorun var gibi görünüyor", "İşlem Başarısız", {
-                                    showMethod: "slideDown",
-                                    hideMethod: "slideUp",
-                                    timeOut: 3e3,
-                                    progressBar: !0,
-                                    closeButton: !0
-                                })
+                        url: "{!!route('fieldSortable')!!}",
+                        success: function (res) {
+
+                            if(res.type == "success"){
+
+                                toastr.success(
+                                    res.message,
+                                    res.head,
+                                    {progressBar:!0}
+                                )
+
+                            }else {
+
+                                toastr.warning(
+                                    res.message,
+                                    res.head,
+                                    {progressBar:!0}
+                                )
+
                             }
                         }
                     });
 
                 }
             });
+
+
             $('.sortables').disableSelection();
 
-        });*/
+        });
 
         $(".js-addSpace").click(function () {
             $(".js-edit_modal form")[0].reset();

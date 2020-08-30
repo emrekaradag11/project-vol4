@@ -65,4 +65,18 @@ class img extends Model
         return true;
     }
 
+    public function deleteImgWithPageId($page_id)
+    {
+
+        $this->where("page_id",$page_id)->each(function($q){
+
+            $path=public_path().'/img/'.$q->img;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+            $q->delete();
+        });
+
+    }
+
 }

@@ -100,6 +100,7 @@ class add_field extends Model
         return
             $this->
             where("page_id",$page_id)
+                ->orderBy("ord","asc")
             ->get();
     }
     public function getFieldWithId($id)
@@ -127,6 +128,34 @@ class add_field extends Model
     public function fieldDetail()
     {
         return $this->hasMany('App\Models\add_field_dtl','metadata','id');
+    }
+
+    public function deleteFieldWithPageId($page_id)
+    {
+
+        $this->where("page_id",$page_id)->each(function($q){
+            $q->fieldDetail()->delete();
+            $q->delete();
+        });
+
+    }
+
+
+    public function change_order($request){
+
+        foreach ($request as $key => $value)
+        {
+            $this->where('id',$value)->update(["ord" => $key]);
+        }
+
+        $noti = array(
+            'message' => "Sıralama Başarılı",
+            'head'=>'İşlem Başarılı',
+            'type' => 'success',
+            'status' => '200'
+        );
+
+        return $noti;
     }
 
 }

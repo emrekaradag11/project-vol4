@@ -42,8 +42,25 @@
                         data : data,
                     },
                     url: "{!!route('pageSortable')!!}",
-                    success: function (msg) {
-                        console.log(msg)
+                    success: function (res) {
+
+                        if(res.type == "success"){
+
+                            toastr.success(
+                                res.message,
+                                res.head,
+                                {progressBar:!0}
+                            )
+
+                        }else {
+
+                            toastr.warning(
+                                res.message,
+                                res.head,
+                                {progressBar:!0}
+                            )
+
+                        }
                     }
                 });
 

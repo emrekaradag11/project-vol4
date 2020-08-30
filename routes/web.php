@@ -37,9 +37,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post("/getFieldWithPageId","back\addFieldController@getFieldWithPageId")->name("getFieldWithPageId");
     Route::post("/getFieldWithId","back\addFieldController@getFieldWithId")->name("getFieldWithId");
     Route::get('/deleteField/{id?}', 'back\addFieldController@deleteField')->name("deleteField");
+    Route::post('/fieldSortable', 'back\addFieldController@sortable')->name('fieldSortable');
 
     /* ek alan dataları */
     Route::post("/setFieldData","back\\fieldDataController@setFieldData")->name("setFieldData");
+    Route::post("/updateFieldData","back\\fieldDataController@updateFieldData")->name("updateFieldData");
 
     /* gorsel router'lari */
     Route::post('setImages', 'back\imgController@setImg')->name("setImg");

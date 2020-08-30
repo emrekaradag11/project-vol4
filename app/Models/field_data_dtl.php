@@ -42,4 +42,27 @@ class field_data_dtl extends Model
     }
 
 
+
+    public function update_dtl($request,$metadatas)
+    {
+        //dd($metadatas);
+
+        $lang = new lang();
+        $lang = $lang->lang_short();
+        foreach ($lang as $l => $k) {
+            $this->
+            updateOrCreate(
+                [
+                    "metadata" => $metadatas,
+                    'lang' => $k->id
+                ], [
+                    "data" => $request[$l]
+                ]
+            );
+        }
+        return true;
+
+    }
+
+
 }

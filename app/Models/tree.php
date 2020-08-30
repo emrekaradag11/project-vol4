@@ -98,5 +98,14 @@ class tree extends Model
         return $this->hasMany('App\Models\tree','parent','id');
     }
 
+    public function deleteTreeWithPageId($page_id)
+    {
+
+        $this->where("page_id",$page_id)->each(function($q){
+            $q->getDetail()->delete();
+            $q->delete();
+        });
+
+    }
 
 }

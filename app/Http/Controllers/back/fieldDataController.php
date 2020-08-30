@@ -18,5 +18,14 @@ class fieldDataController extends Controller
         return redirect()->back();
 
     }
+    public function updateFieldData(Request $request)
+    {
+
+        $fieldModel = new field_data();
+        $fieldModel->updateFieldData($request);
+
+        return redirect()->back();
+
+    }
 
 }

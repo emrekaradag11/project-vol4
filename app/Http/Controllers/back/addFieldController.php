@@ -65,4 +65,15 @@ class addFieldController extends Controller
 
     }
 
+
+    public function sortable(Request $request){
+
+        if($request->ajax()){
+            $addFieldModel = new add_field();
+            $response = $addFieldModel->change_order($request->post("data"));
+        }
+        return $response;
+
+    }
+
 }
