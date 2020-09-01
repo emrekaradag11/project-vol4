@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title d-flex justify-content-between align-items-center">{{$page->getFirstName->head}}</h4>
+                <h4 class="card-title d-flex justify-content-between align-items-center">{{$page->getFirstName->title}}</h4>
                 <p>Pellentesque in ipsum id orci porta dapibus.</p>
             </div>
 
@@ -59,6 +59,16 @@
                                     @endforeach
                                 </div>
                                 <div class="row form-group">
+                                    <div class="col-12">
+                                        <input type="hidden" name="imgParent" value="{{$page->id}}">
+                                        <input type="hidden" name="imgType" value="1">
+                                        <input type="hidden" name="imgDeleted">
+                                        <input type="hidden" name="imgSlugName" value="{{$page->getFirstName->title}}">
+                                        <input type="hidden" name="imgID" value="{{!empty($homeImg[0]->id)?$homeImg[0]->id:null}}">
+                                        <input type="file" class="dropify" data-default-file="{{!empty($homeImg[0]->img)?url("img/" .$homeImg[0]->img):null}}" data-height="300" name="file" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
                                     <div class="col-12 form-group text-right">
                                         <input type="hidden" name="page_id" value="{{$page->id}}">
                                         <button type="submit" class="btn btn-primary">Kaydet</button>
@@ -81,10 +91,10 @@
                         <div class="card-body px-1">
                             <form action="{{Route("setImg")}}" class="dropzone  dropzone-area"  method="post" enctype="multipart/form-data" id="dpz-multiple-files">
                                 @csrf
-                                <input type="hidden" name="parent" value="{{$page->id}}">
+                                <input type="hidden" name="imgParent" value="{{$page->id}}">
                                 <input type="hidden" name="page_id" value="{{$page->id}}">
-                                <input type="hidden" name="type" value="2">
-                                <input type="hidden" name="slug_name" value="{{$page->getFirstName->title}}">
+                                <input type="hidden" name="imgType" value="2">
+                                <input type="hidden" name="imgSlugName" value="{{$page->getFirstName->title}}">
                                 <div class="dz-message">Görselleri sürükleyip bırakın</div>
                             </form>
                         </div>
@@ -103,12 +113,20 @@
     <script src="/back/app-assets/vendors/js/highlight.min.js" type="text/javascript"></script>
     <script src="/back/app-assets/vendors/ckeditor/ckeditor.js" type="text/javascript"></script>
     <script src="/back/app-assets/vendors/js/dropzone.min.js" type="text/javascript"></script>
+    <script src="/back/dropify/js/dropify.min.js"></script>
     <script>
         $(document).ready(function () {
             @foreach($lng as $l => $k)
                 CKEDITOR.replace( 'text{{$l}}' );
             @endforeach
             CKEDITOR.config.height = 400;
+            $('.dropify').dropify();
+        });
+
+        var drEvent = $('.dropify').dropify();
+
+        drEvent.on('dropify.afterClear', function(event, element){
+            $("[name='imgDeleted']").val("1");
         });
 
 
@@ -122,7 +140,7 @@
             dictRemoveFile: " Trash",
             removedfile: function(file)
             {
-                var name = file.name;
+
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -130,7 +148,7 @@
                     type: 'POST',
                     url: '{{Route("deleteImg")}}',
                     data: {
-                        filename: name,
+                        imgID: file.id,
                         page_id : "{{$page->id}}"
                     },
                     success: function (data){
@@ -147,7 +165,7 @@
             init: function() {
                 var thisDropzone = this;
                     @foreach($img as $im)
-                        var mockFile = { name: '{{$im->img}}', size: {{filesize("img/" . $im->img)}}, type: '{{image_type_to_mime_type(exif_imagetype("img/" . $im->img))}}' };
+                        var mockFile = { id: '{{$im->id}}', name: '{{$im->img}}', size: {{filesize("img/" . $im->img)}}, type: '{{image_type_to_mime_type(exif_imagetype("img/" . $im->img))}}' };
                         thisDropzone.emit("addedfile", mockFile);
                         thisDropzone.emit("success", mockFile);
                         thisDropzone.emit("complete",mockFile);
@@ -170,5 +188,6 @@
     <link rel="stylesheet" type="text/css" href="/back/app-assets/vendors/css/dropzone.min.css">
     <link rel="stylesheet" type="text/css" href="/back/app-assets/vendors/css/katex.min.css">
     <link rel="stylesheet" type="text/css" href="/back/app-assets/vendors/css/monokai-sublime.min.css">
+    <link rel="stylesheet" type="text/css" href="/back/dropify/css/dropify.min.css">
 @endsection
 

@@ -26,43 +26,65 @@ class img extends Model
     public function set_img($request)
     {
 
-        $image = $request->file('file');
-        $imageName = Str::slug($request->post("slug_name")) . "_" . uniqid();
-        $img_type = explode(".",$image->getClientOriginalName());
-        $upload_name = $imageName.".".end($img_type);
-        $image->move(public_path('img'),$upload_name);
+        if(!empty($request->file('file')) && $request->post('imgDeleted') != "1"){
 
-        $data = new img();
+            $image = $request->file('file');
+            $imageName = Str::slug($request->post("imgSlugName")) . "_" . uniqid();
+            $img_type = explode(".",$image->getClientOriginalName());
+            $upload_name = $imageName.".".end($img_type);
+            $image->move(public_path('img'),$upload_name);
 
-        $data->parent = $request->post("parent");
-        $data->img = $upload_name;
-        $data->page_id = $request->post("page_id");
-        $data->type = $request->post("type");
-        $data->save();
+            if(!empty($request->post("imgID"))){
+                $data = img::find($request->post("imgID"));
+            }else{
+                $data = new img();
+            }
+
+            if(!empty($data->img)){
+                $path=public_path().'/img/'.$data->img;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+                $data->img = $upload_name;
+            }else{
+                $data->img = $upload_name;
+            }
+
+            $data->parent = $request->post("imgParent");
+            $data->page_id = $request->post("page_id");
+            $data->type = $request->post("imgType");
+            $data->save();
+
+        }else{
+            if($request->post('imgDeleted') == "1"){
+                $this->deleteImg($request);
+            }
+        }
 
     }
 
 
-    public function getImg($id,$parent){
+    public function getImg($page_id,$parent,$type){
         return $this
             ->where([
-                'page_id' => $id,
+                'page_id' => $page_id,
                 'parent' => $parent,
+                'type' => $type,
             ])->get();
     }
 
     public function deleteImg($request)
     {
-        $filename =  $request->post('filename');
-        $this->where([
-            'img'=>$filename,
-            "page_id" => $request->post("page_id")
-        ])->delete();
-        $path=public_path().'/img/'.$filename;
-        if (file_exists($path)) {
-            unlink($path);
-        }
+
+        $this->where("id",$request->post("imgID"))->each(function($q){
+            $path=public_path().'/img/'.$q->img;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+            $q->delete();
+        });
         return true;
+
     }
 
     public function deleteImgWithPageId($page_id)

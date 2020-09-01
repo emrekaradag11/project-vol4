@@ -70,9 +70,10 @@ class textController extends Controller
         $fields = $fieldModel->getFieldWithPageId($id);
         $fieldData = $fieldDataModel->getFieldData($page->id,$page->id);
         $images = new img();
-        $img = $images->getImg($id,$id);
+        $img = $images->getImg($id,$id,2);
+        $homeImg = $images->getImg($id,$id,1);
 
-        return view(('back.text.edit') , compact('fields','page','fieldData','img'));
+        return view(('back.text.edit') , compact('fields','page','fieldData','img','homeImg'));
     }
     /**
      * Update the specified resource in storage.
@@ -83,7 +84,10 @@ class textController extends Controller
      */
     public function update(Request $request)
     {
+
         $pages = new pages();
+        $imgModel = new img();
+        $imgModel->set_img($request);
         $pages->setText($request);
         return redirect()->back();
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\back;
 
 use App\Http\Controllers\Controller;
-use App\Models\{lang,tree,add_field,pages,field_data};
+use App\Models\{lang,tree,add_field,pages,field_data,img};
 use Illuminate\Http\Request;
 
 class treeController extends Controller
@@ -78,7 +78,12 @@ class treeController extends Controller
         $fields = $fieldModel->getFieldWithPageId($page->id);
         $fieldData = $fieldDataModel->getFieldData($page->id,$id);
 
-        return view(('back.tree.edit') , compact("page","tree","data","fields","fieldData"));
+
+        $images = new img();
+        $img = $images->getImg($page_id,$id,2);
+        $homeImg = $images->getImg($page_id,$id,1);
+
+        return view(('back.tree.edit') , compact("page","tree","data","fields","fieldData","img","homeImg"));
     }
 
     /**
@@ -91,7 +96,9 @@ class treeController extends Controller
     public function update(Request $request)
     {
         $tree = new tree();
+        $imgModel = new img();
         $response = $tree->updateTree($request);
+        $imgModel->set_img($request);
         return redirect()->back()->with($response);
     }
 
